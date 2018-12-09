@@ -94,7 +94,8 @@ func (this *JVM) AllocObject(clazz C_JCLASS) C_JOBJECT {
 	return C_JOBJECT(res)
 }
 func (this *JVM) DeleteObject(obj C_JOBJECT) {
-	if obj != nil {
+
+	if int(obj) != 0 {
 		C.DeleteGlobalObject(this.pJavaVM, obj)
 	}
 }
